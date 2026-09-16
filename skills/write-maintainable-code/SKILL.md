@@ -24,11 +24,32 @@ change needs independent review.
 ## Compare routes before adding code
 
 1. Restate the fixed result and acceptance evidence without reopening them.
-2. Inspect current behavior, configuration, reuse, deletion, documentation,
-   and no-code routes. If the current evidence already passes, make no change.
-3. Choose a route only when the fixed acceptance evidence can prove it.
+2. Inspect current code and reuse candidates. Compare current behavior,
+   configuration, reuse, adaptation, replacement, new code, deletion,
+   documentation, and no-code routes. If the current evidence already passes,
+   make no change.
+3. Compare the strongest simpler alternative. Choose a route only when the
+   fixed acceptance evidence can prove it.
 4. Name the smallest ownership seam and the concepts the selected route
-   needs. Name tempting concepts the result does not need.
+   needs. Give each new responsibility a concrete reason tied to the accepted
+   outcome. Name tempting concepts the result does not need.
+
+Choose reuse when it is the better total solution. Existing code alone is no
+reason to require reuse or reject new code. Compare simplicity, safety,
+clarity, coupling, and maintenance cost. Existing tools, frameworks, vendor
+implementations, standards, protocols, and delivery systems are options.
+Building a capability, connection, protocol, or delivery mechanism remains
+valid when it is the better lawful solution. Neither reuse nor custom work
+wins without evidence.
+
+For an implementation return or an engineering proposal required by
+`governed-operator`, name the inspected source and reuse candidates, what to
+reuse, adapt, replace, or build and why,
+the strongest simpler alternative, necessary new responsibilities, material
+placement and dependency choices, verification and meaningful negative cases,
+and unresolved prerequisites or decisions that could change implementation.
+Keep this evidence short. That owner decides when a proposal is required and
+how it returns. This skill creates no proposal or approval gate.
 
 When routes satisfy different checks and the current evidence does not identify
 the applicable check, return that gap to whoever owns the outcome and

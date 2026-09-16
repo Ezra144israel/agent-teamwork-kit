@@ -28,7 +28,7 @@ Restate the unchanged:
 - objective and constraints;
 - acceptance evidence;
 - authority and scope;
-- budget and retry or iteration limits; and
+- budget and binding retry, attempt, cycle, time or cost limits; and
 - true stops and operator decisions.
 
 Never solve a method failure by weakening a locked goal, acceptance predicate,
@@ -61,7 +61,9 @@ objective.
 Separate `LOCKED` from `ASSUMED METHOD`.
 
 `LOCKED` includes authority, safety, privacy, acceptance evidence, budget,
-retry or iteration limits, operator decisions, and hard stops.
+binding retry, attempt, cycle, time or cost limits, operator decisions, and
+hard stops. A default review or process threshold is not `LOCKED`;
+governed-operator's cycle reassessment rule classifies it.
 
 `ASSUMED METHOD` includes the tool, mechanism, order, representation,
 decomposition, and implementation route. Replace an assumed method when it
@@ -120,9 +122,12 @@ complete defect class.
 
 ## 7. Handle a true stop
 
-Stop when authority is missing, safety or privacy blocks, essential evidence
-cannot be trusted, scope must change, an irreversible choice needs the
-operator, or governing retry or attempt limits are exhausted.
+Hold the affected operation when authority is missing, safety or privacy
+blocks it, essential evidence cannot be trusted, scope must change, an
+irreversible choice needs the operator, or an explicit retry, attempt, cycle, time or cost limit that binds under
+governed-operator's cycle reassessment rule is exhausted. Classify default review/process
+thresholds through governed-operator's cycle reassessment rule before treating
+a count as exhausted authority. Keep independent authorized work moving.
 
 Return the exact blocker, preserved `KEEP`, failed routes, lawful alternatives,
 and what unlocks continuation. Name an authority proposal and re-entry

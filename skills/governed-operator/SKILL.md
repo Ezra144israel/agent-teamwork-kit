@@ -182,6 +182,33 @@ Wrong outcomes, routes, metrics, seams, or locked ceilings require
 in-scope obstacles. Use `BLOCKED` only for true authority, evidence, safety,
 privacy, access, scope, or irreversible-action stops.
 
+## Conditional engineering proposal
+
+For material implementation with meaningful architecture, reuse, placement,
+dependency, or implementation-method choices still open, the Builder inspects
+current source and returns a short proposal to ORCHESTRATOR before coding the
+affected part. Load `write-maintainable-code`, section "Compare routes before
+adding code", for the comparison and evidence to include.
+
+The proposal is evidence, not implementation or approval. ORCHESTRATOR may
+accept, modify, combine, or reject it when forming the implementation contract.
+Existing FINAL, GO, review, and publication rules still apply.
+
+Do not require a preliminary proposal for exact, small, bounded, reversible
+work with no meaningful choice left open. Routine reversible judgment stays
+with the Builder inside the accepted contract. A material surprise outside
+that contract holds only the unresolved decision and dependent work. Continue
+independent settled work. Apply existing escalation rules to scope, authority,
+safety, privacy, irreversibility, and evidence conflicts.
+
+An already FINAL contract acquires no retroactive proposal gate. This rule
+adds no review round and does not reopen completed reviews.
+
+For implementation returns, put the comparison evidence specified by
+`write-maintainable-code` in the existing decision, evidence, and unknowns
+fields. Cite the proposal when one was required. Scale the detail to the work
+and reference existing evidence instead of repeating it. Add no return field.
+
 ## Outcome autonomy and evidence
 
 Seats separate authority, authorship, responsibility, and certification. They
@@ -262,14 +289,54 @@ environment receipt, authorization scope, and ledger or gate record.
 Keep one Pressure-Test or review unit open across one complete finding set, one
 substantive correction, and final verification. A material correction defect
 closes `FAIL` or `NEEDS_REVISION` and needs a new subject. Mechanical defects
-use the fast path. At v3, one complete defect-class correction is terminal and
-a failure escalates to the operator.
+use the fast path.
 
-At ten governance artifacts without an integrated outcome, or when a subject
-reaches v3, reconverge around a larger safe slice, fewer returns, complete
-finding-set repair, stronger context, bounded autonomy, and reused evidence.
-Receipts, successful reviews, corrections, environment adaptation, evidence
-reuse, and reversible continuation are not operator gates.
+Default process thresholds require reassessment, not project abandonment or
+automatic permission renewal. At three completed Builder-to-Reviewer cycles
+per work unit, at v3, or at ten governance artifacts without an integrated
+outcome, ORCHESTRATOR invokes reasoning-doctrine's Find-a-Way method before
+choosing the next action.
+
+Identify the defect class and owning layer. Preserve KEEP, DROP, UNKNOWN,
+verified evidence and the full causal history. Compare the strongest simpler
+or different lawful route, including a larger safe slice, fewer returns,
+complete finding-set repair, stronger context, bounded autonomy and reused
+evidence. Name one concrete next action, its responsible
+owner, decisive evidence, and applicable scope, attempt, time and cost bounds.
+Reuse existing records. Add no report or approval layer.
+
+An unchanged failed method does not earn another automatic cycle. A further
+cycle needs meaningful new evidence about the failure or a genuinely different
+remedy that addresses its cause. A renamed task, new version or new subject
+does not reset the history. Ordinary local edit/test iteration is not a
+Builder-to-Reviewer cycle. Keep closed judgments closed.
+
+Continue bounded reversible work already authorized by the current contract
+without asking for the same permission again. Escalate only the unresolved
+material decision or affected operation that needs authority. A default count
+alone is not that boundary.
+
+A ceiling is explicit, and binds the operation it names, only when it comes
+from one of these: a direct operator instruction or an OPERATOR_LOCK hard
+stop; a frozen Outcome Contract boundary that names which protected interest
+it guards; a bound named by a completed reassessment for the next cycle; or a
+safety, privacy, evidence, cost, publication or irreversible-action rule. An
+explicit ceiling names the unit it bounds and its reopen condition. Restating
+a default count in a dispatch, plan, handoff or overlay quotes it and
+activates nothing beyond the default. A ceiling settled before this rule keeps
+the meaning its own record gave it, and a later direct release of it stands.
+
+A bound set by reassessment binds one cycle. When that cycle ends without the
+decisive evidence the reassessment named, the next step is the operator
+decision packet, not another reassessment of the same defect class.
+Exhausting any explicit ceiling holds the affected operation until valid
+further authority exists. A different method grants no exception to it.
+
+If no lawful next action is established, return the exact affected boundary,
+preserved progress and the evidence or decision needed to reopen it. Continue
+independent settled work. Do not invent a route, acceptance, access or budget.
+Receipts, successful reviews, ordinary corrections, environment adaptation,
+evidence reuse and authorized reversible continuation are not operator gates.
 
 ## Commit, publication, and solo posture
 
