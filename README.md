@@ -1,10 +1,10 @@
-# governed-agent-skills
+# agent-teamwork-kit
 
 **Instructions guide the work. Guards check what judgment should not decide.**
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![plugin](https://img.shields.io/badge/plugin-governed%40ezra--governed-blueviolet.svg)](#install-the-instruction-layer-as-a-claude-code-plugin)
-[![Security checks](https://github.com/Ezra144israel/governed-agent-skills/actions/workflows/security.yml/badge.svg)](https://github.com/Ezra144israel/governed-agent-skills/actions/workflows/security.yml)
+[![plugin](https://img.shields.io/badge/plugin-teamwork--kit%40ezra--teamwork--kit-blueviolet.svg)](#install-the-instruction-layer-as-a-claude-code-plugin)
+[![Security checks](https://github.com/Ezra144israel/agent-teamwork-kit/actions/workflows/security.yml/badge.svg)](https://github.com/Ezra144israel/agent-teamwork-kit/actions/workflows/security.yml)
 ![version](https://img.shields.io/badge/version-4.2.1-blue.svg)
 ![skills](https://img.shields.io/badge/skills-6-blue.svg)
 ![guards](https://img.shields.io/badge/guards-2-orange.svg)
@@ -18,18 +18,18 @@ only the six skills. It does not install, wire, or activate either guard. Not
 every skill needs a guard. Add enforcement only where a rule can be checked
 mechanically and the cost of a miss matters.
 
-[![A visual comparison of the Instruction Layer and Enforcement Layer](assets/destructive-command-guard/destructive-command-guard-poster.png)](https://ezra144israel.github.io/governed-agent-skills/#live-proof)
+[![A visual comparison of the Instruction Layer and Enforcement Layer](assets/destructive-guardian/destructive-guardian-poster.png)](https://ezra144israel.github.io/agent-teamwork-kit/#live-proof)
 
-[Watch the 50-second guard proof](https://ezra144israel.github.io/governed-agent-skills/#live-proof),
-read its [transcript](assets/destructive-command-guard/destructive-command-guard-transcript.md),
-or inspect the [machine-readable evidence](demo/destructive-command-guard/evidence/public-evidence.json).
+[Watch the 50-second guard proof](https://ezra144israel.github.io/agent-teamwork-kit/#live-proof),
+read its [transcript](assets/destructive-guardian/destructive-guardian-transcript.md),
+or inspect the [machine-readable evidence](demo/destructive-guardian/evidence/public-evidence.json).
 This candidate contains one sterile Codex receipt. Older maintainer records for
 Claude Code and Antigravity are separate observations.
 
 ![The governed loop](assets/how-it-works.svg)
 
 Full picture, including when each skill loads:
-[**how it works, live page**](https://ezra144israel.github.io/governed-agent-skills/).
+[**how it works, live page**](https://ezra144israel.github.io/agent-teamwork-kit/).
 
 Built and maintained by [Ezra Israel](https://github.com/Ezra144israel) · [X](https://x.com/Eisrael144).
 
@@ -42,13 +42,13 @@ agent's mistake can reach a codebase, a deploy, or a canonical record.
 
 If your agents do other work, such as marketing copy, listings, research,
 design, or operations, most of this package is heavier than you need.
-Take `reasoning-doctrine` (the working method: verify before asserting,
+Take `thinking` (the working method: verify before asserting,
 never build on unconfirmed facts, and catch drift on long tasks. It applies
 to any kind of work) and leave the constitution until
 the day your agents touch real code.
 
 An honest scope statement beats a broad one. If you install only one
-skill from this repo, install `reasoning-doctrine`.
+skill from this repo, install `thinking`.
 
 ## What a "seat" is
 
@@ -95,24 +95,24 @@ implementation lens, test evidence, and maximum-assurance review cycle.
 
 | Skill | What it does | Files |
 |---|---|---|
-| `skills/reasoning-doctrine/` | Stops drift. Frame, ground, converge, execute, verify. Every task. | `SKILL.md` + 4 references |
-| `skills/governed-operator/` | The constitution. Seats, gates, and one rule above all: the builder never approves its own work. | `SKILL.md` |
-| `skills/write-maintainable-code/` | The smallest change that truly does the job. Nothing speculative survives. | `SKILL.md` |
-| `skills/portable-adaptive-planning/` | A plan is not permission. FINAL, then GO, and nothing runs without both. | `SKILL.md` + 1 reference |
-| `skills/test-verification/` | Tests prove behavior, not internals. Green is not proof. | `SKILL.md` + 1 reference |
-| `skills/ship-it-or-fix-it/` | On your say-so only. The acceptance oracle freezes before the code exists. | `SKILL.md` |
+| `skills/thinking/` | Stops drift. Frame, ground, converge, execute, verify. Every task. | `SKILL.md` + 4 references |
+| `skills/teamwork/` | The constitution. Seats, gates, and one rule above all: the builder never approves its own work. | `SKILL.md` |
+| `skills/better-coding/` | The smallest change that truly does the job. Nothing speculative survives. | `SKILL.md` |
+| `skills/plans/` | A plan is not permission. FINAL, then GO, and nothing runs without both. | `SKILL.md` + 1 reference |
+| `skills/test-the-test/` | Tests prove behavior, not internals. Green is not proof. | `SKILL.md` + 1 reference |
+| `skills/ship-or-fix/` | On your say-so only. The acceptance oracle freezes before the code exists. | `SKILL.md` |
 
 ### Supported installation units
 
 Skills install individually. Their installation units, in package order, are:
 
-- `reasoning-doctrine` works alone.
-- `governed-operator` requires `reasoning-doctrine`.
-- `write-maintainable-code` works alone.
-- `portable-adaptive-planning` works alone.
-- `test-verification` works alone.
-- `ship-it-or-fix-it` requires `governed-operator`, `reasoning-doctrine`, and
-  `test-verification`.
+- `thinking` works alone.
+- `teamwork` requires `thinking`.
+- `better-coding` works alone.
+- `plans` works alone.
+- `test-the-test` works alone.
+- `ship-or-fix` requires `teamwork`, `thinking`, and
+  `test-the-test`.
 - the full six-skill package.
 
 ## Enforcement Layer
@@ -122,8 +122,8 @@ Cloning this repository or installing the plugin activates neither guard.
 
 | Guard | Purpose |
 |---|---|
-| [`destructive-command-guard/`](destructive-command-guard/) | Python pre-execution hook that denies a narrow set of catastrophic shell commands. It has no third-party dependencies. Its safe sentinel proves that the hook runs on a live surface. |
-| [`change-containment-guard/`](change-containment-guard/) | Rust final-state guard that seals allowed change classes, then rejects unclassified changes and stale verification receipts. Version 4 ships source only. Build, copy, and hook wiring are separate manual steps. |
+| [`destructive-guardian/`](destructive-guardian/) | Python pre-execution hook that denies a narrow set of catastrophic shell commands. It has no third-party dependencies. Its safe sentinel proves that the hook runs on a live surface. |
+| [`change-guardian/`](change-guardian/) | Rust final-state guard that seals allowed change classes, then rejects unclassified changes and stale verification receipts. Version 4 ships source only. Build, copy, and hook wiring are separate manual steps. |
 
 Read each guard's README for technical details, verified support, limits, and
 installation. The root README stays short so those facts have one source of
@@ -145,22 +145,22 @@ Two modes. Both work. Pick one per surface.
    only when its trigger fires. See [activation/](activation/) for example
    files. Nothing activates when you clone this repo.
 
-Recommended load order: `reasoning-doctrine` on any nontrivial task. Add
-`governed-operator` (it requires the method) before governed work.
-`write-maintainable-code` after the outcome, acceptance evidence, scope, and
-authority are fixed. Use `test-verification` when tests are written or
-reviewed. `ship-it-or-fix-it` loads only on your explicit
+Recommended load order: `thinking` on any nontrivial task. Add
+`teamwork` (it requires the method) before governed work.
+`better-coding` after the outcome, acceptance evidence, scope, and
+authority are fixed. Use `test-the-test` when tests are written or
+reviewed. `ship-or-fix` loads only on your explicit
 maximum-assurance decision, never on task class alone. Independent review
 follows the change.
 
 ## Install the Instruction Layer as a Claude Code plugin
 
 ```
-/plugin marketplace add Ezra144israel/governed-agent-skills
-/plugin install governed@ezra-governed
+/plugin marketplace add Ezra144israel/agent-teamwork-kit
+/plugin install teamwork-kit@ezra-teamwork-kit
 ```
 
-Skills load namespaced (for example `/governed:reasoning-doctrine`). Manual
+Skills load namespaced (for example `/teamwork-kit:thinking`). Manual
 installation, copying `skills/*` into `~/.claude/skills/`, works exactly
 the same. The plugin installs only the six skills. It does not install, wire,
 or activate the Enforcement Layer guards. See [INSTALL.md](INSTALL.md).
@@ -190,7 +190,7 @@ Confirmations and failure reports on any route are welcome.
 A note on what "verified" covers: skills are invoked when a request matches
 their description. They are not command-level enforcement. For hard blocking
 of destructive commands, see
-[destructive-command-guard/](destructive-command-guard/).
+[destructive-guardian/](destructive-guardian/).
 
 Guard installation is separate on every surface. See the
 [Enforcement Layer install routes](INSTALL.md#enforcement-layer).
@@ -198,7 +198,7 @@ Guard installation is separate on every surface. See the
 **GitHub Copilot CLI:**
 
 ```
-copilot plugin install Ezra144israel/governed-agent-skills
+copilot plugin install Ezra144israel/agent-teamwork-kit
 ```
 
 **VS Code (Copilot):** enable the `chat.plugins.enabled` setting, then Command
@@ -210,10 +210,10 @@ feature. Your organization may disable it.)
 **Codex / ChatGPT desktop:**
 
 ```
-codex plugin marketplace add Ezra144israel/governed-agent-skills
+codex plugin marketplace add Ezra144israel/agent-teamwork-kit
 ```
 
-then `/plugins` → source "ezra-governed" → install "governed" → start a new
+then `/plugins` → source "ezra-teamwork-kit" → install "teamwork-kit" → start a new
 session.
 
 **Cursor desktop and ChatGPT web:** not yet directly installable, because

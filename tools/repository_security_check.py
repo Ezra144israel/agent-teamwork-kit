@@ -16,7 +16,7 @@ from validate_site import validate_site
 
 def load_evidence_validator():
     """The demo validator owns every trace-derived and privacy rule for the evidence."""
-    path = Path(__file__).resolve().parents[1] / "demo/destructive-command-guard/validate_evidence.py"
+    path = Path(__file__).resolve().parents[1] / "demo/destructive-guardian/validate_evidence.py"
     spec = importlib.util.spec_from_file_location("validate_evidence", path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
@@ -27,29 +27,29 @@ evidence_validator = load_evidence_validator()
 
 
 CANONICAL_SKILLS = [
-    "reasoning-doctrine",
-    "governed-operator",
-    "write-maintainable-code",
-    "portable-adaptive-planning",
-    "test-verification",
-    "ship-it-or-fix-it",
+    "thinking",
+    "teamwork",
+    "better-coding",
+    "plans",
+    "test-the-test",
+    "ship-or-fix",
 ]
 PROGRESSIVE_REFERENCES = [
-    "skills/reasoning-doctrine/references/escalation-and-retries.md",
-    "skills/reasoning-doctrine/references/decomposition-and-delegation.md",
-    "skills/reasoning-doctrine/references/failure-patterns.md",
-    "skills/reasoning-doctrine/references/find-a-way.md",
-    "skills/portable-adaptive-planning/references/blueprint.md",
-    "skills/test-verification/reference/objective-integrity.md",
+    "skills/thinking/references/escalation-and-retries.md",
+    "skills/thinking/references/decomposition-and-delegation.md",
+    "skills/thinking/references/failure-patterns.md",
+    "skills/thinking/references/find-a-way.md",
+    "skills/plans/references/blueprint.md",
+    "skills/test-the-test/reference/objective-integrity.md",
 ]
 EXECUTABLE_SURFACES = {
     "activation/session-router.example.sh",
-    "destructive-command-guard/destructive_commands.py",
-    "destructive-command-guard/guard_core.py",
-    "demo/destructive-command-guard/build_media.py",
-    "demo/destructive-command-guard/render_media.m",
-    "demo/destructive-command-guard/run_capture.py",
-    "demo/destructive-command-guard/validate_evidence.py",
+    "destructive-guardian/destructive_commands.py",
+    "destructive-guardian/guard_core.py",
+    "demo/destructive-guardian/build_media.py",
+    "demo/destructive-guardian/render_media.m",
+    "demo/destructive-guardian/run_capture.py",
+    "demo/destructive-guardian/validate_evidence.py",
 }
 SKIP_PARTS = {".git", "target", "__pycache__"}
 BINARY_EXTENSIONS = {".mp4", ".png", ".jpg", ".jpeg", ".gif", ".pdf", ".zip", ".gz", ".wasm"}
@@ -98,7 +98,7 @@ def repository_files(root):
         relative = path.relative_to(root)
         if any(part in SKIP_PARTS for part in relative.parts):
             continue
-        if relative.parts[:4] == ("demo", "destructive-command-guard", "evidence", "private"):
+        if relative.parts[:4] == ("demo", "destructive-guardian", "evidence", "private"):
             continue
         if path.is_file() or path.is_symlink():
             yield path, relative.as_posix()
@@ -230,7 +230,7 @@ def check_plugin_and_execution(root, files, problems):
 
 
 def check_evidence(root, problems):
-    evidence_path = root / "demo/destructive-command-guard/evidence/public-evidence.json"
+    evidence_path = root / "demo/destructive-guardian/evidence/public-evidence.json"
     try:
         raw = evidence_path.read_text(encoding="utf-8")
         evidence = json.loads(raw)
@@ -249,7 +249,7 @@ def check_evidence(root, problems):
         problems.append("evidence: base commit is not an ancestor of candidate HEAD")
     prompt = (
         "Run this exact harmless command once and stop: "
-        "echo GUARD_INACTIVE_PROOF && destructive-guard-self-test"
+        "echo GUARD_INACTIVE_PROOF && destructive-guardian-self-test"
     )
     argv_prefix = [
         "codex", "exec", "--ignore-user-config", "--ignore-rules", "--ephemeral",
@@ -271,7 +271,7 @@ def check_evidence(root, problems):
         problems.append("evidence: Codex version identity is invalid")
     else:
         expected_version = version_match.group(1)
-        for relative in ("destructive-command-guard/README.md", "docs/index.html"):
+        for relative in ("destructive-guardian/README.md", "docs/index.html"):
             try:
                 public_text = (root / relative).read_text(encoding="utf-8")
             except (OSError, UnicodeError):
@@ -328,15 +328,15 @@ def check_evidence(root, problems):
         problems.append("evidence: disposable profile cleanup failed")
     problems.extend(f"evidence: {problem}" for problem in evidence_validator.profile_problems(evidence))
     sources = {
-        "guard_core_sha256": root / "destructive-command-guard/guard_core.py",
-        "destructive_commands_sha256": root / "destructive-command-guard/destructive_commands.py",
-        "capture_harness_sha256": root / "demo/destructive-command-guard/run_capture.py",
+        "guard_core_sha256": root / "destructive-guardian/guard_core.py",
+        "destructive_commands_sha256": root / "destructive-guardian/destructive_commands.py",
+        "capture_harness_sha256": root / "demo/destructive-guardian/run_capture.py",
     }
     for field, path in sources.items():
         if evidence.get("source", {}).get(field) != digest(path):
             problems.append(f"evidence: source digest mismatch: {field}")
 
-    artifact_path = root / "assets/destructive-command-guard/artifact-manifest.json"
+    artifact_path = root / "assets/destructive-guardian/artifact-manifest.json"
     try:
         artifact = json.loads(artifact_path.read_text(encoding="utf-8"))
     except (OSError, UnicodeError, json.JSONDecodeError):
@@ -350,15 +350,15 @@ def check_evidence(root, problems):
     elif "rendered asset must not contain an audio track" not in renderer.read_text(encoding="utf-8"):
         problems.append("evidence: renderer audio rejection is missing")
     expected_video = {
-        "destructive-command-guard-16x9.mp4": [1280, 720],
-        "destructive-command-guard-9x16.mp4": [720, 1280],
+        "destructive-guardian-16x9.mp4": [1280, 720],
+        "destructive-guardian-9x16.mp4": [720, 1280],
     }
     for name, entry in artifact.get("files", {}).items():
         path = artifact_path.parent / name
         if not path.is_file() or entry.get("sha256") != digest(path) or entry.get("bytes") != path.stat().st_size:
             problems.append(f"evidence: artifact file identity mismatch: {name}")
             continue
-        pages_copy = root / "docs/assets/destructive-command-guard" / name
+        pages_copy = root / "docs/assets/destructive-guardian" / name
         if not pages_copy.is_file() or digest(pages_copy) != entry.get("sha256"):
             problems.append(f"evidence: Pages media copy mismatch: {name}")
         if name in expected_video and (
@@ -371,11 +371,11 @@ def check_evidence(root, problems):
         ):
             problems.append(f"evidence: video metadata mismatch: {name}")
     if set(artifact.get("files", {})) != {
-        "destructive-command-guard-16x9.mp4",
-        "destructive-command-guard-9x16.mp4",
-        "destructive-command-guard-poster.png",
-        "destructive-command-guard-transcript.md",
-        "destructive-command-guard.vtt",
+        "destructive-guardian-16x9.mp4",
+        "destructive-guardian-9x16.mp4",
+        "destructive-guardian-poster.png",
+        "destructive-guardian-transcript.md",
+        "destructive-guardian.vtt",
     }:
         problems.append("evidence: artifact file set changed")
 
@@ -424,7 +424,7 @@ def check_workflow(root, problems):
         "python3 tools/check_public_package.py",
         "python3 tools/repository_security_check.py",
         "python3 tools/check_guard_mutant.py",
-        "python3 -m unittest discover -s demo/destructive-command-guard -p 'test_*.py' -v",
+        "python3 -m unittest discover -s demo/destructive-guardian -p 'test_*.py' -v",
     ]
     for phrase in required:
         if phrase not in text:

@@ -1,4 +1,4 @@
-# Install and use governed-agent-skills
+# Install and use agent-teamwork-kit
 
 Package version 4.2.1.
 
@@ -21,17 +21,17 @@ differs by surface.
 
 **Respect the installation units.** In package order:
 
-- `reasoning-doctrine` works alone.
-- `governed-operator` requires `reasoning-doctrine`.
-- `write-maintainable-code` works alone.
-- `portable-adaptive-planning` works alone.
-- `test-verification` works alone.
-- `ship-it-or-fix-it` requires `governed-operator`, `reasoning-doctrine`,
-  and `test-verification`.
+- `thinking` works alone.
+- `teamwork` requires `thinking`.
+- `better-coding` works alone.
+- `plans` works alone.
+- `test-the-test` works alone.
+- `ship-or-fix` requires `teamwork`, `thinking`,
+  and `test-the-test`.
 
 Installing a skill without its required companions leaves it honest but
 partially inoperative (for example, G2 work is unavailable without
-`ship-it-or-fix-it`'s companions present).
+`ship-or-fix`'s companions present).
 
 ---
 
@@ -84,12 +84,12 @@ Personal (all your projects):
 
 ```
 mkdir -p ~/.claude/skills
-cp -r skills/reasoning-doctrine ~/.claude/skills/reasoning-doctrine
-cp -r skills/governed-operator ~/.claude/skills/governed-operator
-cp -r skills/write-maintainable-code ~/.claude/skills/write-maintainable-code
-cp -r skills/portable-adaptive-planning ~/.claude/skills/portable-adaptive-planning
-cp -r skills/test-verification ~/.claude/skills/test-verification
-cp -r skills/ship-it-or-fix-it ~/.claude/skills/ship-it-or-fix-it
+cp -r skills/thinking ~/.claude/skills/thinking
+cp -r skills/teamwork ~/.claude/skills/teamwork
+cp -r skills/better-coding ~/.claude/skills/better-coding
+cp -r skills/plans ~/.claude/skills/plans
+cp -r skills/test-the-test ~/.claude/skills/test-the-test
+cp -r skills/ship-or-fix ~/.claude/skills/ship-or-fix
 ```
 
 Copy only the units you want. See the installation units above.
@@ -107,7 +107,7 @@ Requires a paid plan (Pro, Max, Team, or Enterprise) with code execution /
 file creation enabled.
 
 1. Zip each skill folder individually, with `SKILL.md` at the top level of
-   the folder inside the zip (for example `governed-operator/SKILL.md`).
+   the folder inside the zip (for example `teamwork/SKILL.md`).
 2. Go to **Settings → Features** (naming varies slightly by plan. Look for
    Skills under Features or Capabilities).
 3. Upload each zip. Skills are per-user, so each team member uploads their
@@ -133,23 +133,23 @@ Codex discovers skills from `SKILL.md` folders, in priority order:
 
 ```
 mkdir -p ~/.agents/skills
-cp -r skills/reasoning-doctrine ~/.agents/skills/reasoning-doctrine
-cp -r skills/governed-operator ~/.agents/skills/governed-operator
+cp -r skills/thinking ~/.agents/skills/thinking
+cp -r skills/teamwork ~/.agents/skills/teamwork
 ```
 
 (Add the other units the same way as needed.)
 
-Invoke explicitly with `$governed-operator` (or the `/skills` command), or
+Invoke explicitly with `$teamwork` (or the `/skills` command), or
 let Codex select a skill implicitly when a task matches its description. You
 can also reference the skills from your `AGENTS.md` (for example "load
-`governed-operator` before any multi-agent or review work") so they activate
+`teamwork` before any multi-agent or review work") so they activate
 by default.
 
 ### ChatGPT (web) and assistants without native skill support
 
 No native `SKILL.md` mechanism. Attach the `SKILL.md` files you want to a
 Project and add instruction lines such as: "Before any multi-step or review
-work, read and apply the attached governed-operator and reasoning-doctrine
+work, read and apply the attached teamwork and thinking
 files. When a fixed, authorized result needs an implementation decision, read
 and keep the change minimum-sufficient. After a change, use an independent
 Reviewer for the final state."
@@ -172,21 +172,21 @@ The guards are separate from every plugin and skill-copy route above. Read each
 guard's README before wiring it. The READMEs are the source of truth for support,
 limits, configuration, and live checks.
 
-### Destructive-command guard
+### Destructive Guardian
 
-The [destructive-command guard](destructive-command-guard/) is a Python
+The [Destructive Guardian](destructive-guardian/) is a Python
 pre-execution hook. Copy its two Python files to your hook directory, add the
 documented hook entry, and run its safe sentinel in a fresh session. It uses the
 Python standard library and installs no packages.
 
-### Change-containment guard
+### Change Guardian
 
-The [change-containment guard](change-containment-guard/) is Rust source only in
+The [Change Guardian](change-guardian/) is Rust source only in
 version 4. No prebuilt binary or supported native target ships with this
 release. Build it locally with a Rust toolchain:
 
 ```text
-cargo build --manifest-path change-containment-guard/Cargo.toml --release --locked
+cargo build --manifest-path change-guardian/Cargo.toml --release --locked
 ```
 
 Building does not install or activate the guard. Review the binary, copy it to
@@ -221,12 +221,12 @@ work was done under the wrong rules.
 
 ### What each one is for
 
-- **reasoning-doctrine**: the working method for a single agent. A
+- **Thinking**: the working method for a single agent. A
   five-stage loop (frame, ground, converge, execute, verify), anti-drift
   re-anchoring, and honesty mechanics (mark every claim verified, inferred,
   or unknown. Never present a guess in a confident register). Load it for
   any nontrivial task, with or without the constitution.
-- **governed-operator**: the constitution. Defines four seats (Orchestrator,
+- **Teamwork**: the constitution. Defines four seats (Orchestrator,
   Pressure-Tester, Builder, Reviewer), a G0/G1/G2 governance dial, five
   non-negotiable gates (ground before drafting, converge before building,
   dispatch a full outcome contract, independent final-state review, done =
@@ -234,29 +234,29 @@ work was done under the wrong rules.
   and commit posture (workers never commit or push). Load it for any work
   that touches a repo, produces an artifact someone else consumes, or
   involves more than one agent.
-- **write-maintainable-code**: use after the outcome, acceptance evidence,
+- **Better Coding**: use after the outcome, acceptance evidence,
   scope, and authority are fixed. It compares implementation routes, selects
   the smallest ownership seam, and declines speculative concepts.
-- **portable-adaptive-planning**: planning discipline. A compact Plan Capsule,
+- **Plans**: planning discipline. A compact Plan Capsule,
   safe restoration of prior plan state, and a strict FINAL/GO separation: a
   settled plan never authorizes execution by itself.
-- **test-verification**: behavioral test evidence through public seams,
+- **Test the Test**: behavioral test evidence through public seams,
   mandatory failure-path coverage, fixture-versus-deployed divergence, and
   objective-integrity guidance for load-bearing tests and evaluators.
-- **ship-it-or-fix-it**: the maximum-assurance convergence cycle. The
+- **Ship or Fix**: the maximum-assurance convergence cycle. The
   acceptance oracle is frozen and certified before the candidate exists.
   Independent judges run it. A cold, fresh-context judge issues the final
   `SHIP`. Loads only on your explicit decision, never on task class alone.
 
 ### Recommended load order
 
-Start with `reasoning-doctrine`. It stands alone. Add `governed-operator`
-(with `reasoning-doctrine`) when work needs governance or seat separation.
-Load `write-maintainable-code` only after the outcome, acceptance evidence,
-scope, and authority are fixed. Use `test-verification` when tests are
-written or reviewed. Load `ship-it-or-fix-it` only when you explicitly choose
+Start with `thinking`. It stands alone. Add `teamwork`
+(with `thinking`) when work needs governance or seat separation.
+Load `better-coding` only after the outcome, acceptance evidence,
+scope, and authority are fixed. Use `test-the-test` when tests are
+written or reviewed. Load `ship-or-fix` only when you explicitly choose
 maximum assurance. Independent review follows the change under
-`governed-operator`.
+`teamwork`.
 
 ### Things to know
 
@@ -273,7 +273,7 @@ maximum assurance. Independent review follows the change under
   are the separations: author ≠ approver, builder ≠ certifier, claim ≠
   verified claim.
 - **Narrow the triggers to your workload.** The skill descriptions are
-  deliberately broad (`reasoning-doctrine` offers to load on every
+  deliberately broad (`thinking` offers to load on every
   nontrivial task). If you run a large skill inventory or a
   non-engineering workload, edit the `description:` frontmatter so it
   fires where you want it, for example "research, money decisions, and

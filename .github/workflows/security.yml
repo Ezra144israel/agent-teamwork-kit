@@ -25,11 +25,11 @@ jobs:
           rustup toolchain install 1.98.0 --profile minimal --component rustfmt,clippy
           rustup default 1.98.0
 
-      - name: Test the destructive-command guard
-        run: python3 -m unittest discover -s destructive-command-guard -p 'test_*.py' -v
+      - name: Test the Destructive Guardian
+        run: python3 -m unittest discover -s destructive-guardian -p 'test_*.py' -v
 
       - name: Test sterile capture process cleanup
-        run: python3 -m unittest discover -s demo/destructive-command-guard -p 'test_*.py' -v
+        run: python3 -m unittest discover -s demo/destructive-guardian -p 'test_*.py' -v
 
       - name: Prove the guard mutant is rejected
         run: python3 tools/check_guard_mutant.py
@@ -47,20 +47,20 @@ jobs:
         run: python3 tools/repository_security_check.py
 
       - name: Check Rust formatting
-        working-directory: change-containment-guard
+        working-directory: change-guardian
         run: cargo fmt --check
 
       - name: Run Clippy
-        working-directory: change-containment-guard
+        working-directory: change-guardian
         run: cargo clippy --locked --all-targets -- -D warnings
 
       - name: Run locked Rust tests
-        working-directory: change-containment-guard
+        working-directory: change-guardian
         run: cargo test --locked --all-targets
 
       - name: Install pinned cargo-audit
         run: cargo install cargo-audit --version 0.22.2 --locked
 
       - name: Audit locked Rust dependencies
-        working-directory: change-containment-guard
+        working-directory: change-guardian
         run: cargo audit --file Cargo.lock

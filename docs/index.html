@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="Six skills tell coding agents how to work. Two guards check the parts that should not depend on judgment.">
-<title>Governed Agent Skills v4.2.1</title>
+<title>Agent Teamwork Kit v4.2.1</title>
 <style>
   :root {
     --bg: #0e1116;
@@ -206,7 +206,7 @@
 <a class="skip" href="#content">Skip to content</a>
 <main id="content">
   <header class="hero">
-    <p class="eyebrow">governed-agent-skills v4.2.1</p>
+    <p class="eyebrow">agent-teamwork-kit v4.2.1</p>
     <h1>Instructions with enforcement where it counts.</h1>
     <p class="lead">Six skills tell coding agents how to work. Two guards check the parts that should not depend on judgment.</p>
     <p class="claim">// the agent that builds a thing never approves it</p>
@@ -223,7 +223,7 @@
       <article class="card layer enforcement">
         <span class="label">Enforcement Layer</span>
         <h3>Two guards check mechanical boundaries</h3>
-        <p>The destructive-command guard runs before shell execution. The change-containment guard checks final repository state. Each guard is installed and wired separately.</p>
+        <p>The Destructive Guardian runs before shell execution. The Change Guardian checks final repository state. Each guard is installed and wired separately.</p>
       </article>
     </div>
     <p class="note">Not every skill needs a guard. Use enforcement when a rule has a mechanical answer and a miss can cause real damage.</p>
@@ -242,14 +242,14 @@
   </section>
 
   <section aria-labelledby="skills-heading">
-    <h2 id="skills-heading">When each skill loads</h2>
+    <h2 id="skills-heading">When to load each skill</h2>
     <div class="ladder">
-      <div class="rung"><span class="when">Any nontrivial task begins</span><span class="skill">reasoning-doctrine</span></div>
-      <div class="rung"><span class="when">Work touches a repository, record, or another agent</span><span class="skill">governed-operator</span></div>
-      <div class="rung"><span class="when">Outcome, scope, authority, and evidence are fixed</span><span class="skill">write-maintainable-code</span></div>
-      <div class="rung"><span class="when">The work needs a plan</span><span class="skill">portable-adaptive-planning</span></div>
-      <div class="rung"><span class="when">Tests are written or judged</span><span class="skill">test-verification</span></div>
-      <div class="rung"><span class="when">The operator explicitly asks for maximum assurance</span><span class="skill">ship-it-or-fix-it</span></div>
+      <div class="rung"><span class="when">Any nontrivial task begins</span><span class="skill">Thinking</span></div>
+      <div class="rung"><span class="when">Work touches a repository, record, or another agent</span><span class="skill">Teamwork</span></div>
+      <div class="rung"><span class="when">Outcome, scope, authority, and evidence are fixed</span><span class="skill">Better Coding</span></div>
+      <div class="rung"><span class="when">The work needs a plan</span><span class="skill">Plans</span></div>
+      <div class="rung"><span class="when">Tests are written or judged</span><span class="skill">Test the Test</span></div>
+      <div class="rung"><span class="when">The operator explicitly asks for maximum assurance</span><span class="skill">Ship or Fix</span></div>
     </div>
   </section>
 
@@ -267,15 +267,15 @@
     <div class="grid">
       <article class="card guard">
         <span class="label">Python, pre-execution</span>
-        <h3>Destructive-command guard</h3>
+        <h3>Destructive Guardian</h3>
         <p>Denies a narrow set of catastrophic shell commands before an agent runs them. This candidate has one sterile Codex receipt. Older maintainer records separately cover Claude Code and Antigravity.</p>
-        <a href="https://github.com/Ezra144israel/governed-agent-skills/blob/main/destructive-command-guard/README.md">Read the destructive-command guard documentation</a>
+        <a href="https://github.com/Ezra144israel/agent-teamwork-kit/blob/main/destructive-guardian/README.md">Read the Destructive Guardian documentation</a>
       </article>
       <article class="card guard">
         <span class="label">Rust, final state</span>
-        <h3>Change-containment guard</h3>
+        <h3>Change Guardian</h3>
         <p>Seals allowed change classes, then rejects unclassified repository changes and stale receipts. Version 4 is source only. Live hook dispatch is not claimed.</p>
-        <a href="https://github.com/Ezra144israel/governed-agent-skills/blob/main/change-containment-guard/README.md">Read the change-containment guard documentation</a>
+        <a href="https://github.com/Ezra144israel/agent-teamwork-kit/blob/main/change-guardian/README.md">Read the Change Guardian documentation</a>
       </article>
     </div>
   </section>
@@ -283,16 +283,16 @@
   <section id="live-proof" aria-labelledby="proof-heading">
     <h2 id="proof-heading">Live guard proof</h2>
     <p class="note">The same harmless command ran in two sterile Codex profiles. Without the Enforcement Layer, the marker printed before the missing sentinel failed. With the Enforcement Layer, the hook denied the command before execution and the marker was absent.</p>
-    <video class="proof-video" controls preload="metadata" poster="assets/destructive-command-guard/destructive-command-guard-poster.png">
-      <source src="assets/destructive-command-guard/destructive-command-guard-16x9.mp4" type="video/mp4">
-      <track kind="captions" src="assets/destructive-command-guard/destructive-command-guard.vtt" srclang="en" label="English" default>
-      Your browser cannot play this video. <a href="assets/destructive-command-guard/destructive-command-guard-16x9.mp4">Download the MP4</a>.
+    <video class="proof-video" controls preload="metadata" poster="assets/destructive-guardian/destructive-guardian-poster.png">
+      <source src="assets/destructive-guardian/destructive-guardian-16x9.mp4" type="video/mp4">
+      <track kind="captions" src="assets/destructive-guardian/destructive-guardian.vtt" srclang="en" label="English" default>
+      Your browser cannot play this video. <a href="assets/destructive-guardian/destructive-guardian-16x9.mp4">Download the MP4</a>.
     </video>
     <div class="proof-links">
-      <a href="assets/destructive-command-guard/destructive-command-guard-transcript.md">Read the transcript</a>
-      <a href="https://github.com/Ezra144israel/governed-agent-skills/blob/main/demo/destructive-command-guard/evidence/public-evidence.json">Inspect the public evidence</a>
+      <a href="assets/destructive-guardian/destructive-guardian-transcript.md">Read the transcript</a>
+      <a href="https://github.com/Ezra144israel/agent-teamwork-kit/blob/main/demo/destructive-guardian/evidence/public-evidence.json">Inspect the public evidence</a>
     </div>
-    <p class="note">This proves one Codex 0.152.1 sterile-profile run. It does not prove that the guard is installed in your profile or that it covers general Bash.</p>
+    <p class="note">This proves one Codex 0.154.0 sterile-profile run. It does not prove that the guard is installed in your profile or that it covers general Bash.</p>
   </section>
 
   <section aria-labelledby="install-heading">
@@ -300,7 +300,7 @@
     <div class="install">
       <p><strong>The plugin installs only the six Instruction Layer skills.</strong> It does not install, wire, or activate either guard.</p>
       <p>Install each Enforcement Layer guard from its own README. The Rust guard has no prebuilt binary or supported native target in version 4.</p>
-      <p><a href="https://github.com/Ezra144israel/governed-agent-skills/blob/main/INSTALL.md">Read the complete installation guide</a></p>
+      <p><a href="https://github.com/Ezra144israel/agent-teamwork-kit/blob/main/INSTALL.md">Read the complete installation guide</a></p>
     </div>
   </section>
 

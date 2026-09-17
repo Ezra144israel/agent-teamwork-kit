@@ -17,13 +17,13 @@ TOOLS = Path(__file__).resolve().parent
 sys.path.insert(0, str(TOOLS))
 from repository_security_check import check_repository, digest  # noqa: E402
 
-DEMO = TOOLS.parent / "demo/destructive-command-guard"
-EVIDENCE = "demo/destructive-command-guard/evidence/public-evidence.json"
-ARTIFACT_MANIFEST = "assets/destructive-command-guard/artifact-manifest.json"
+DEMO = TOOLS.parent / "demo/destructive-guardian"
+EVIDENCE = "demo/destructive-guardian/evidence/public-evidence.json"
+ARTIFACT_MANIFEST = "assets/destructive-guardian/artifact-manifest.json"
 SOURCE_DIGESTS = {
-    "guard_core_sha256": "destructive-command-guard/guard_core.py",
-    "destructive_commands_sha256": "destructive-command-guard/destructive_commands.py",
-    "capture_harness_sha256": "demo/destructive-command-guard/run_capture.py",
+    "guard_core_sha256": "destructive-guardian/guard_core.py",
+    "destructive_commands_sha256": "destructive-guardian/destructive_commands.py",
+    "capture_harness_sha256": "demo/destructive-guardian/run_capture.py",
 }
 
 
@@ -40,7 +40,7 @@ evidence_validator = load_demo_module("validate_evidence")
 
 def ignore_copy(directory, names):
     ignored = {name for name in names if name in {".git", ".codex", "target", "__pycache__"}}
-    if Path(directory).as_posix().endswith("demo/destructive-command-guard/evidence"):
+    if Path(directory).as_posix().endswith("demo/destructive-guardian/evidence"):
         ignored.add("private")
     return ignored
 
@@ -109,7 +109,7 @@ class RepositorySecurityMutants(unittest.TestCase):
         self.assert_rule("distribution:")
 
     def test_missing_progressive_reference_fails_distribution(self):
-        (self.root / "skills/reasoning-doctrine/references/find-a-way.md").unlink()
+        (self.root / "skills/thinking/references/find-a-way.md").unlink()
         self.assert_rule("distribution:")
 
     def test_executable_mode_fails_git_surface(self):
@@ -211,35 +211,35 @@ class RepositorySecurityMutants(unittest.TestCase):
         self.assert_rule("evidence: privacy: account detail")
 
     def test_evidence_candidate_identity_mutant_fails(self):
-        path = self.root / "demo/destructive-command-guard/evidence/public-evidence.json"
+        path = self.root / "demo/destructive-guardian/evidence/public-evidence.json"
         value = json.loads(path.read_text(encoding="utf-8"))
         value["source"]["repository_commit"] = value["source"].pop("base_commit")
         path.write_text(json.dumps(value), encoding="utf-8")
         self.assert_rule("evidence: candidate state identity")
 
     def test_evidence_argv_mutant_fails(self):
-        path = self.root / "demo/destructive-command-guard/evidence/public-evidence.json"
+        path = self.root / "demo/destructive-guardian/evidence/public-evidence.json"
         value = json.loads(path.read_text(encoding="utf-8"))
         value["tool"]["argv"]["unprotected"].insert(-1, "--approve-for-me")
         path.write_text(json.dumps(value), encoding="utf-8")
         self.assert_rule("evidence: unprotected argv")
 
     def test_evidence_cleanup_mutant_fails(self):
-        path = self.root / "demo/destructive-command-guard/evidence/public-evidence.json"
+        path = self.root / "demo/destructive-guardian/evidence/public-evidence.json"
         value = json.loads(path.read_text(encoding="utf-8"))
         value["cleanup"]["temporary_auth_copies_exist_after_capture"] = True
         path.write_text(json.dumps(value), encoding="utf-8")
         self.assert_rule("evidence: disposable profile cleanup")
 
     def test_evidence_computed_home_inventory_mutant_fails(self):
-        path = self.root / "demo/destructive-command-guard/evidence/public-evidence.json"
+        path = self.root / "demo/destructive-guardian/evidence/public-evidence.json"
         value = json.loads(path.read_text(encoding="utf-8"))
         value["manifest"]["home_files_after"]["protected"] = [".personal-config"]
         path.write_text(json.dumps(value), encoding="utf-8")
         self.assert_rule("evidence: sterile profile boundary")
 
     def test_evidence_remote_skill_inventory_mutant_fails(self):
-        path = self.root / "demo/destructive-command-guard/evidence/public-evidence.json"
+        path = self.root / "demo/destructive-guardian/evidence/public-evidence.json"
         value = json.loads(path.read_text(encoding="utf-8"))
         value["manifest"]["profile_files_after"]["protected"].append("skills/personal/SKILL.md")
         value["manifest"]["profile_files_after"]["protected"].sort()
@@ -250,10 +250,10 @@ class RepositorySecurityMutants(unittest.TestCase):
         self.assert_rule("evidence: plugin, MCP, or non-system skill")
 
     def test_public_codex_version_mutant_fails(self):
-        evidence_path = self.root / "demo/destructive-command-guard/evidence/public-evidence.json"
+        evidence_path = self.root / "demo/destructive-guardian/evidence/public-evidence.json"
         evidence = json.loads(evidence_path.read_text(encoding="utf-8"))
         version = evidence["tool"]["codex_version"].removeprefix("codex-cli ")
-        path = self.root / "destructive-command-guard/README.md"
+        path = self.root / "destructive-guardian/README.md"
         path.write_text(
             path.read_text(encoding="utf-8").replace(
                 f"Codex {version}",
@@ -264,21 +264,21 @@ class RepositorySecurityMutants(unittest.TestCase):
         self.assert_rule("evidence: public Codex version")
 
     def test_artifact_manifest_mutant_fails(self):
-        path = self.root / "assets/destructive-command-guard/artifact-manifest.json"
+        path = self.root / "assets/destructive-guardian/artifact-manifest.json"
         value = json.loads(path.read_text(encoding="utf-8"))
-        value["files"]["destructive-command-guard-16x9.mp4"]["duration_seconds"] = 49
+        value["files"]["destructive-guardian-16x9.mp4"]["duration_seconds"] = 49
         path.write_text(json.dumps(value), encoding="utf-8")
         self.assert_rule("evidence: video metadata mismatch")
 
     def test_semantic_frame_hash_mutant_fails(self):
-        path = self.root / "assets/destructive-command-guard/artifact-manifest.json"
+        path = self.root / "assets/destructive-guardian/artifact-manifest.json"
         value = json.loads(path.read_text(encoding="utf-8"))
-        del value["files"]["destructive-command-guard-16x9.mp4"]["semantic_frame_hash"]
+        del value["files"]["destructive-guardian-16x9.mp4"]["semantic_frame_hash"]
         path.write_text(json.dumps(value), encoding="utf-8")
         self.assert_rule("evidence: video metadata mismatch")
 
     def test_renderer_audio_rejection_mutant_fails(self):
-        path = self.root / "demo/destructive-command-guard/render_media.m"
+        path = self.root / "demo/destructive-guardian/render_media.m"
         path.write_text(
             path.read_text(encoding="utf-8").replace(
                 "rendered asset must not contain an audio track",
@@ -286,7 +286,7 @@ class RepositorySecurityMutants(unittest.TestCase):
             ),
             encoding="utf-8",
         )
-        manifest_path = self.root / "assets/destructive-command-guard/artifact-manifest.json"
+        manifest_path = self.root / "assets/destructive-guardian/artifact-manifest.json"
         manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
         manifest["renderer"]["sha256"] = hashlib.sha256(path.read_bytes()).hexdigest()
         manifest_path.write_text(json.dumps(manifest), encoding="utf-8")

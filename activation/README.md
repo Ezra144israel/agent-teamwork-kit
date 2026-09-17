@@ -34,9 +34,9 @@ The lightest progressive wiring: one standing instruction that binds every
 session. Example text:
 
 ```
-Before any nontrivial task, load and apply the reasoning-doctrine skill.
+Before any nontrivial task, load and apply the thinking skill.
 Before any multi-agent, review, dispatch, or repo-mutating work, also load
-and apply the governed-operator skill. State which of the two are applied
+and apply the teamwork skill. State which of the two are applied
 in the first line of your first substantive response.
 ```
 
@@ -47,7 +47,7 @@ Where to put it:
   `settings.example.json`. A `CLAUDE.md` line also works but can be lost in
   memory-file edits.
 - **Codex:** `~/.codex/AGENTS.md` or the repo's `AGENTS.md`, using
-  `$reasoning-doctrine` / `$governed-operator` syntax.
+  `$thinking` / `$teamwork` syntax.
 - **claude.ai / ChatGPT:** the Project's custom instructions.
 
 ## Pattern 3: the session router
@@ -67,7 +67,7 @@ Router rules that keep it safe:
 
 - **Fail closed.** Activate a skill only when its listed trigger matches. If
   the router is missing or stale, fall back to manual invoke. Do not guess.
-- **Vetoes are absolute.** A row's veto (for example, `ship-it-or-fix-it` never
+- **Vetoes are absolute.** A row's veto (for example, `ship-or-fix` never
   auto-activates on task class) outranks any trigger match.
 - **The load receipt.** The agent states which skills it applied in the
   first line of its first substantive response, so broken wiring is visible

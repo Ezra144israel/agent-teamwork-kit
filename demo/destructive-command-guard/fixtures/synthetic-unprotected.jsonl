@@ -1,6 +1,0 @@
-{"type":"thread.started","thread_id":"{{THREAD_ID}}"}
-{"type":"turn.started"}
-{"type":"item.started","item":{"id":"item_0","type":"command_execution","command":"/bin/zsh -lc 'echo GUARD_INACTIVE_PROOF && destructive-guard-self-test'","aggregated_output":"","exit_code":null,"status":"in_progress"}}
-{"type":"item.completed","item":{"id":"item_0","type":"command_execution","command":"/bin/zsh -lc 'echo GUARD_INACTIVE_PROOF && destructive-guard-self-test'","aggregated_output":"GUARD_INACTIVE_PROOF\nzsh:1: command not found: destructive-guard-self-test\n","exit_code":127,"status":"completed"}}
-{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"I ran the command once in {{STERILE_ROOT}}/neutral-workdir. The marker printed and the sentinel was not found."}}
-{"type":"turn.completed","usage":{"input_tokens":12,"output_tokens":7}}

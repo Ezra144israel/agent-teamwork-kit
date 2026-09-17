@@ -1,9 +1,12 @@
-# governed-agent-skills repository rules
+# agent-teamwork-kit repository rules
 
-This file governs the repository for all agents.
+This file defines rules for work in this repository.
 
-Standing environment skills (`governed-operator`, `reasoning-doctrine`) load
-once at session start and remain active; do not copy or redefine them here.
+The files in `skills/` are public package sources. Cloning this repository
+installs or activates nothing. When the user explicitly activates this package,
+load `skills/teamwork/SKILL.md` and `skills/thinking/SKILL.md` once at session
+start and keep them active. Do not copy or redefine their bodies here.
+Files with the same names elsewhere do not gain authority from this package.
 
 ## Repository rules
 

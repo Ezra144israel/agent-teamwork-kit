@@ -1,0 +1,64 @@
+{
+  "files": {
+    "destructive-guardian-16x9.mp4": {
+      "audio_tracks": 0,
+      "bytes": 1751962,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "duration_seconds": 28,
+      "frame_rate": 30,
+      "semantic_frame_hash": "fnv1a64:7717629ae91a1b65",
+      "sha256": "36a77ab52d33a421f97e0cb6ac0089942c34818c84c8258229cbd692a7afeffd",
+      "video_tracks": 1
+    },
+    "destructive-guardian-9x16.mp4": {
+      "audio_tracks": 0,
+      "bytes": 1637097,
+      "dimensions": [
+        720,
+        1280
+      ],
+      "duration_seconds": 28,
+      "frame_rate": 30,
+      "semantic_frame_hash": "fnv1a64:5d84f0323ff369f9",
+      "sha256": "7085d00ec8d12522ad5d00a16c8f00b71ef57f6910a9e31345310b6ba7535773",
+      "video_tracks": 1
+    },
+    "destructive-guardian-poster.png": {
+      "bytes": 107745,
+      "dimensions": [
+        1280,
+        720
+      ],
+      "sha256": "86416106e1e3a4035d44bd93732b7970c45c51e793c817d69de189cb13a89531"
+    },
+    "destructive-guardian-transcript.md": {
+      "bytes": 871,
+      "sha256": "ff56cb485dd00f31b0bb47ea14ec4503bcf5d924ec8657610e99a6dab69d6cf4"
+    },
+    "destructive-guardian.vtt": {
+      "bytes": 579,
+      "sha256": "216a3ea3c5d9f548bb511cdf651ca37728cf9ca1d65ced0f1bbe9385f1c93578"
+    }
+  },
+  "renderer": {
+    "byte_reproducible_on_second_clean_run": false,
+    "codec": "H.264 High Auto Level",
+    "compiler": "Apple clang version 21.0.0 (clang-2100.3.34.2)",
+    "duration_seconds": 28,
+    "frame_rate": 30,
+    "os": "27.0",
+    "path": "demo/destructive-guardian/render_media.m",
+    "reproducibility_limit": "Platform H.264 encoding can change container bytes. Require equal text, timings, dimensions, frame rate, duration, and source evidence identity.",
+    "sdk": "MacOSX.sdk",
+    "sha256": "9acf47fe3636b4d4ac20631ec5c1369a16d972227c1e9437d7779068a6623809"
+  },
+  "schema": "destructive-guardian-artifacts/v1",
+  "source_evidence": {
+    "path": "demo/destructive-guardian/evidence/public-evidence.json",
+    "schema": "destructive-guardian-public-evidence/v3",
+    "sha256": "35f133fba60c05d91012874cf8e121bac19a68d395475b5ec65dc3e490c5e317"
+  }
+}

@@ -108,7 +108,7 @@ def check_mutant(source: Path, mutation) -> None:
 
 def main():
     root = Path(__file__).resolve().parents[1]
-    source = root / "destructive-command-guard"
+    source = root / "destructive-guardian"
     for mutation in MUTATIONS:
         check_mutant(source, mutation)
     names = ", ".join(mutation[0] for mutation in MUTATIONS)

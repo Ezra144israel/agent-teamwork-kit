@@ -1,16 +1,16 @@
 {
   "schema": "repository-media-allowlist/v1",
   "files": {
-    "assets/destructive-command-guard/destructive-command-guard-16x9.mp4": "77965cbbdab03d2e87c22e5231e8c8107dbb3b1e3cc366a2ae7febdd03c93d78",
-    "assets/destructive-command-guard/destructive-command-guard-9x16.mp4": "9a40683d73a8a8e12b74bac513cb252512659eeb387f96d02d73510848e8b48f",
-    "assets/destructive-command-guard/destructive-command-guard-poster.png": "20e98dd9ef30adadfe9a28da204625d4f0aa27ae6eae8336055b6abec71c099f",
-    "assets/destructive-command-guard/destructive-command-guard-transcript.md": "c4bd8842f982a7b539cf09c9b3cb769b36fb6dab82b02a3486c8914a04ba88f1",
-    "assets/destructive-command-guard/destructive-command-guard.vtt": "216a3ea3c5d9f548bb511cdf651ca37728cf9ca1d65ced0f1bbe9385f1c93578",
+    "assets/destructive-guardian/destructive-guardian-16x9.mp4": "36a77ab52d33a421f97e0cb6ac0089942c34818c84c8258229cbd692a7afeffd",
+    "assets/destructive-guardian/destructive-guardian-9x16.mp4": "7085d00ec8d12522ad5d00a16c8f00b71ef57f6910a9e31345310b6ba7535773",
+    "assets/destructive-guardian/destructive-guardian-poster.png": "86416106e1e3a4035d44bd93732b7970c45c51e793c817d69de189cb13a89531",
+    "assets/destructive-guardian/destructive-guardian-transcript.md": "ff56cb485dd00f31b0bb47ea14ec4503bcf5d924ec8657610e99a6dab69d6cf4",
+    "assets/destructive-guardian/destructive-guardian.vtt": "216a3ea3c5d9f548bb511cdf651ca37728cf9ca1d65ced0f1bbe9385f1c93578",
     "assets/social-preview.png": "c69c45cd957f7dc6818e1f95e50b4208cbde12f96b5d69b327a0f84b93eb5283",
-    "docs/assets/destructive-command-guard/destructive-command-guard-16x9.mp4": "77965cbbdab03d2e87c22e5231e8c8107dbb3b1e3cc366a2ae7febdd03c93d78",
-    "docs/assets/destructive-command-guard/destructive-command-guard-9x16.mp4": "9a40683d73a8a8e12b74bac513cb252512659eeb387f96d02d73510848e8b48f",
-    "docs/assets/destructive-command-guard/destructive-command-guard-poster.png": "20e98dd9ef30adadfe9a28da204625d4f0aa27ae6eae8336055b6abec71c099f",
-    "docs/assets/destructive-command-guard/destructive-command-guard-transcript.md": "c4bd8842f982a7b539cf09c9b3cb769b36fb6dab82b02a3486c8914a04ba88f1",
-    "docs/assets/destructive-command-guard/destructive-command-guard.vtt": "216a3ea3c5d9f548bb511cdf651ca37728cf9ca1d65ced0f1bbe9385f1c93578"
+    "docs/assets/destructive-guardian/destructive-guardian-16x9.mp4": "36a77ab52d33a421f97e0cb6ac0089942c34818c84c8258229cbd692a7afeffd",
+    "docs/assets/destructive-guardian/destructive-guardian-9x16.mp4": "7085d00ec8d12522ad5d00a16c8f00b71ef57f6910a9e31345310b6ba7535773",
+    "docs/assets/destructive-guardian/destructive-guardian-poster.png": "86416106e1e3a4035d44bd93732b7970c45c51e793c817d69de189cb13a89531",
+    "docs/assets/destructive-guardian/destructive-guardian-transcript.md": "ff56cb485dd00f31b0bb47ea14ec4503bcf5d924ec8657610e99a6dab69d6cf4",
+    "docs/assets/destructive-guardian/destructive-guardian.vtt": "216a3ea3c5d9f548bb511cdf651ca37728cf9ca1d65ced0f1bbe9385f1c93578"
   }
 }

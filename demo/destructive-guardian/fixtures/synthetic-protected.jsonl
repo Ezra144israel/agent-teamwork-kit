@@ -1,0 +1,5 @@
+{"type":"thread.started","thread_id":"{{THREAD_ID}}"}
+{"type":"turn.started"}
+{"type":"item.completed","item":{"id":"item_0","type":"error","message":"Tool call blocked by PreToolUse hook: Destructive Guardian self-test denied before Bash execution."}}
+{"type":"item.completed","item":{"id":"item_1","type":"agent_message","text":"The command did not run and I am stopping."}}
+{"type":"turn.completed","usage":{"input_tokens":12,"output_tokens":9}}

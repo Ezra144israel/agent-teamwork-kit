@@ -1,10 +1,10 @@
 {
-  "name": "ezra-governed",
+  "name": "ezra-teamwork-kit",
   "owner": { "name": "Ezra Israel" },
   "description": "Six-skill Instruction Layer for governed coding agents. Enforcement Layer guards are separate from the plugin.",
   "plugins": [
     {
-      "name": "governed",
+      "name": "teamwork-kit",
       "source": "./",
       "version": "4.2.1",
       "description": "Six-skill Instruction Layer for governed coding agents. The plugin installs skills only. Enforcement Layer guards are separate and are not installed or activated."

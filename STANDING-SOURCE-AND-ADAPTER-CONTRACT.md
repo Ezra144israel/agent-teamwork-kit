@@ -9,8 +9,10 @@ Instruction Layer. Each skill and its required reference files resolve inside
 this repository. Release and verification commands use only files from this
 repository.
 
-Installed copies are releases or user-owned adapters. An adapter must declare
-its change. An undeclared byte difference is drift.
+Copies explicitly installed from this repository are releases or user-owned
+adapters. An adapter must declare its change. An undeclared byte difference
+in such a copy is drift. A matching name elsewhere does not establish origin
+or authority. Cloning this repository installs or activates nothing.
 
 The two Enforcement Layer guards have separate READMEs. They are outside the
 skill distribution.
@@ -19,12 +21,12 @@ skill distribution.
 
 | Skill | Public files | Dependencies |
 |---|---|---|
-| `reasoning-doctrine` | `SKILL.md` and four files in `references/` | none |
-| `governed-operator` | `SKILL.md` | `reasoning-doctrine` |
-| `write-maintainable-code` | `SKILL.md` | none |
-| `portable-adaptive-planning` | `SKILL.md` and `references/blueprint.md` | none |
-| `test-verification` | `SKILL.md` and `reference/objective-integrity.md` | none |
-| `ship-it-or-fix-it` | `SKILL.md` | `governed-operator`, `reasoning-doctrine`, and `test-verification` |
+| `thinking` | `SKILL.md` and four files in `references/` | none |
+| `teamwork` | `SKILL.md` | `thinking` |
+| `better-coding` | `SKILL.md` | none |
+| `plans` | `SKILL.md` and `references/blueprint.md` | none |
+| `test-the-test` | `SKILL.md` and `reference/objective-integrity.md` | none |
+| `ship-or-fix` | `SKILL.md` | `teamwork`, `thinking`, and `test-the-test` |
 
 No skill absent from this table is part of the public package.
 

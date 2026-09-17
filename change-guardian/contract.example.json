@@ -1,0 +1,90 @@
+{
+  "schema": "change-guardian-contract/v1",
+  "repository_id": null,
+  "baseline": null,
+  "rules": [
+    {
+      "class": "implementation",
+      "patterns": ["src/**"],
+      "allow_staged": true,
+      "allow_unstaged": true,
+      "allow_kinds": ["file"],
+      "allow_test_suppression": false
+    },
+    {
+      "class": "test",
+      "patterns": ["tests/**", "test/**", "**/*_test.*", "**/*.test.*", "**/*.spec.*"],
+      "allow_staged": true,
+      "allow_unstaged": true,
+      "allow_kinds": ["file"],
+      "allow_test_suppression": false
+    },
+    {
+      "class": "evaluator",
+      "patterns": ["evaluator/**"],
+      "allow_staged": true,
+      "allow_unstaged": true,
+      "allow_kinds": ["file"],
+      "allow_test_suppression": false
+    },
+    {
+      "class": "dependency",
+      "patterns": ["Cargo.toml", "Cargo.lock", "package.json", "package-lock.json", "pyproject.toml", "requirements.txt"],
+      "allow_staged": true,
+      "allow_unstaged": true,
+      "allow_kinds": ["file"],
+      "allow_test_suppression": false
+    },
+    {
+      "class": "generated",
+      "patterns": ["dist/**"],
+      "allow_staged": true,
+      "allow_unstaged": true,
+      "allow_kinds": ["file"],
+      "allow_test_suppression": false
+    }
+  ],
+  "dependency_patterns": ["Cargo.toml", "Cargo.lock", "package.json", "package-lock.json", "pyproject.toml", "requirements.txt"],
+  "generated": [
+    {
+      "patterns": ["dist/**"],
+      "source_patterns": ["src/**"],
+      "requires_source_change": true
+    }
+  ],
+  "test_ecosystems": [
+    {
+      "name": "rust",
+      "patterns": ["tests/**/*.rs", "**/*_test.rs"],
+      "suppression_markers": ["#[ignore]"]
+    },
+    {
+      "name": "python-pytest-unittest",
+      "patterns": ["tests/**/*.py", "test/**/*.py", "**/test_*.py", "**/*_test.py"],
+      "suppression_markers": ["@pytest.mark.skip", "pytest.skip(", "@unittest.skip"]
+    },
+    {
+      "name": "javascript-typescript",
+      "patterns": ["**/*.test.js", "**/*.test.ts", "**/*.spec.js", "**/*.spec.ts"],
+      "suppression_markers": ["describe.skip(", "test.skip(", "it.skip(", "xdescribe(", "xit("]
+    },
+    {
+      "name": "go",
+      "patterns": ["**/*_test.go"],
+      "suppression_markers": ["t.Skip(", "t.Skipf(", "t.SkipNow("]
+    },
+    {
+      "name": "java-junit",
+      "patterns": ["**/src/test/**/*.java"],
+      "suppression_markers": ["@Disabled", "@Ignore"]
+    },
+    {
+      "name": "ruby-rspec",
+      "patterns": ["spec/**/*.rb"],
+      "suppression_markers": ["xdescribe ", "xit ", "pending ", "skip "]
+    }
+  ],
+  "unknown_test_patterns": ["tests/**", "test/**", "**/*_test.*", "**/*.test.*", "**/*.spec.*", "spec/**"],
+  "verification_commands": [["cargo", "test", "--all-targets"]],
+  "contract_hash": null
+}

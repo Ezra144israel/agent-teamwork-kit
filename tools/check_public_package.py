@@ -9,27 +9,27 @@ import sys
 
 
 SKILLS = (
-    "reasoning-doctrine",
-    "governed-operator",
-    "write-maintainable-code",
-    "portable-adaptive-planning",
-    "test-verification",
-    "ship-it-or-fix-it",
+    "thinking",
+    "teamwork",
+    "better-coding",
+    "plans",
+    "test-the-test",
+    "ship-or-fix",
 )
 
 SKILL_FILES = {
-    "skills/reasoning-doctrine/SKILL.md",
-    "skills/reasoning-doctrine/references/decomposition-and-delegation.md",
-    "skills/reasoning-doctrine/references/escalation-and-retries.md",
-    "skills/reasoning-doctrine/references/failure-patterns.md",
-    "skills/reasoning-doctrine/references/find-a-way.md",
-    "skills/governed-operator/SKILL.md",
-    "skills/write-maintainable-code/SKILL.md",
-    "skills/portable-adaptive-planning/SKILL.md",
-    "skills/portable-adaptive-planning/references/blueprint.md",
-    "skills/test-verification/SKILL.md",
-    "skills/test-verification/reference/objective-integrity.md",
-    "skills/ship-it-or-fix-it/SKILL.md",
+    "skills/thinking/SKILL.md",
+    "skills/thinking/references/decomposition-and-delegation.md",
+    "skills/thinking/references/escalation-and-retries.md",
+    "skills/thinking/references/failure-patterns.md",
+    "skills/thinking/references/find-a-way.md",
+    "skills/teamwork/SKILL.md",
+    "skills/better-coding/SKILL.md",
+    "skills/plans/SKILL.md",
+    "skills/plans/references/blueprint.md",
+    "skills/test-the-test/SKILL.md",
+    "skills/test-the-test/reference/objective-integrity.md",
+    "skills/ship-or-fix/SKILL.md",
 }
 
 ROOT_ENTRIES = {
@@ -45,9 +45,9 @@ ROOT_ENTRIES = {
     "STANDING-SOURCE-AND-ADAPTER-CONTRACT.md",
     "activation",
     "assets",
-    "change-containment-guard",
+    "change-guardian",
     "demo",
-    "destructive-command-guard",
+    "destructive-guardian",
     "docs",
     "plugin.json",
     "security",
@@ -55,7 +55,7 @@ ROOT_ENTRIES = {
     "tools",
 }
 
-PUBLIC_REPOSITORY = "https://github.com/Ezra144israel/governed-agent-skills"
+PUBLIC_REPOSITORY = "https://github.com/Ezra144israel/agent-teamwork-kit"
 PLUGIN_FILES = ("plugin.json", ".claude-plugin/plugin.json")
 MARKDOWN_LINK = re.compile(r"!?\[[^\]]*\]\(([^)\s]+)(?:\s+['\"][^'\"]*['\"])?\)")
 SKILL_PATH = re.compile(r"(?<![A-Za-z0-9.-])skills/([a-z][a-z0-9-]+)(?:/|\b)")

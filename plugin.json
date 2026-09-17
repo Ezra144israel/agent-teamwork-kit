@@ -1,10 +1,10 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "governed",
+  "name": "teamwork-kit",
   "version": "4.2.1",
   "description": "Six-skill Instruction Layer for governed coding agents. The plugin installs skills only. Enforcement Layer guards are separate and are not installed or activated.",
   "author": { "name": "Ezra Israel" },
-  "repository": "https://github.com/Ezra144israel/governed-agent-skills",
+  "repository": "https://github.com/Ezra144israel/agent-teamwork-kit",
   "license": "MIT",
   "keywords": ["governance", "agent-skills", "code-review", "reasoning", "multi-agent", "design-review", "writing"]
 }

@@ -49,8 +49,8 @@ The checks focus on accidental package growth, hidden executable behavior,
 unsafe repository metadata, leaked credentials, unapproved binary bytes,
 external page loads, and drift between public evidence and generated media.
 
-The destructive-command guard is a narrow pre-execution denylist, not a Bash
-sandbox. The change-containment guard proves one observed repository state, not
+The Destructive Guardian is a narrow pre-execution denylist, not a Bash
+sandbox. The Change Guardian proves one observed repository state, not
 the intent or quality of the contract. Read each guard README for its exact
 supported grammar and remaining limits.
 

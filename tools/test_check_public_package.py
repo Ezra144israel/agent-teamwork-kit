@@ -30,7 +30,7 @@ class PublicPackageCheckTest(unittest.TestCase):
         self.assertEqual(check_package(self.root), [])
 
     def test_missing_public_skill_fails(self):
-        shutil.rmtree(self.root / "skills/reasoning-doctrine")
+        shutil.rmtree(self.root / "skills/thinking")
         self.assert_problem("missing skill files")
 
     def test_unlisted_skill_fails(self):
@@ -50,7 +50,7 @@ class PublicPackageCheckTest(unittest.TestCase):
         self.assert_problem("reference to a skill outside the package")
 
     def test_missing_child_reference_fails(self):
-        (self.root / "skills/test-verification/reference/objective-integrity.md").unlink()
+        (self.root / "skills/test-the-test/reference/objective-integrity.md").unlink()
         self.assert_problem("missing skill files")
 
     def test_plugin_count_drift_fails(self):
