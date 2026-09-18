@@ -20,7 +20,7 @@ mechanically and the cost of a miss matters.
 
 [![A visual comparison of the Instruction Layer and Enforcement Layer](assets/destructive-guardian/destructive-guardian-poster.png)](https://ezra144israel.github.io/agent-teamwork-kit/#live-proof)
 
-[Watch the 50-second guard proof](https://ezra144israel.github.io/agent-teamwork-kit/#live-proof),
+[Watch the 28-second guard proof](https://ezra144israel.github.io/agent-teamwork-kit/#live-proof),
 read its [transcript](assets/destructive-guardian/destructive-guardian-transcript.md),
 or inspect the [machine-readable evidence](demo/destructive-guardian/evidence/public-evidence.json).
 This candidate contains one sterile Codex receipt. Older maintainer records for
