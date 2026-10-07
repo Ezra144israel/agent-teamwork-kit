@@ -95,8 +95,106 @@ class ProcessGroupCleanupTests(unittest.TestCase):
                 os.killpg(group_id, 0)
             except ProcessLookupError:
                 return
+            except PermissionError as error:
+                if error.errno != errno.EPERM:
+                    raise
+                # A denied probe is not proof of either presence or absence.
+                listing = subprocess.run(
+                    ["ps", "-axo", "pgid="],
+                    check=True,
+                    capture_output=True,
+                    text=True,
+                    timeout=1,
+                )
+                groups = {int(value) for value in listing.stdout.split()}
+                if os.getpgrp() not in groups:
+                    raise RuntimeError("process listing omitted the test's own group")
+                if group_id not in groups:
+                    return
             time.sleep(0.05)
         self.fail(f"owned process group {group_id} did not exit")
+
+    def test_assert_process_group_exits_checks_listing_after_permission_error(self):
+        group_id = 12345
+        listing = subprocess.CompletedProcess(
+            ["ps", "-axo", "pgid="], 0, " 456\n 789\n", ""
+        )
+        with mock.patch.object(
+            os, "killpg", side_effect=PermissionError(errno.EPERM, "denied")
+        ) as killpg, mock.patch.object(
+            subprocess, "run", return_value=listing
+        ) as run, mock.patch.object(os, "getpgrp", return_value=456):
+            self.assert_process_group_exits(group_id)
+
+        killpg.assert_called_once_with(group_id, 0)
+        run.assert_called_once_with(
+            ["ps", "-axo", "pgid="],
+            check=True,
+            capture_output=True,
+            text=True,
+            timeout=1,
+        )
+
+    def test_assert_process_group_exits_rejects_present_group_after_denied_probe(self):
+        group_id = 12345
+        listing = subprocess.CompletedProcess(
+            ["ps", "-axo", "pgid="], 0, f" {group_id}\n {os.getpgrp()}\n", ""
+        )
+        with mock.patch.object(
+            os, "killpg", side_effect=PermissionError(errno.EPERM, "denied")
+        ) as killpg, mock.patch.object(
+            subprocess, "run", return_value=listing
+        ), mock.patch.object(
+            time, "monotonic", side_effect=[0, 0, 3]
+        ), mock.patch.object(time, "sleep"):
+            with self.assertRaisesRegex(AssertionError, "did not exit"):
+                self.assert_process_group_exits(group_id)
+
+        killpg.assert_called_once_with(group_id, 0)
+
+    def test_assert_process_group_exits_rejects_unverifiable_listing(self):
+        for output, error_type in (
+            ("", RuntimeError),
+            (" 123\n", RuntimeError),
+            ("not-a-group\n", ValueError),
+        ):
+            listing = subprocess.CompletedProcess(["ps"], 0, output, "")
+            with self.subTest(output=output), mock.patch.object(
+                os, "killpg", side_effect=PermissionError(errno.EPERM, "denied")
+            ), mock.patch.object(
+                subprocess, "run", return_value=listing
+            ), mock.patch.object(os, "getpgrp", return_value=456):
+                with self.assertRaises(error_type):
+                    self.assert_process_group_exits(12345)
+
+    def test_assert_process_group_exits_propagates_listing_failures(self):
+        for error in (
+            subprocess.CalledProcessError(1, ["ps"]),
+            subprocess.TimeoutExpired(["ps"], 1),
+        ):
+            with self.subTest(error=type(error).__name__), mock.patch.object(
+                os, "killpg", side_effect=PermissionError(errno.EPERM, "denied")
+            ), mock.patch.object(subprocess, "run", side_effect=error):
+                with self.assertRaises(type(error)):
+                    self.assert_process_group_exits(12345)
+
+    def test_assert_process_group_exits_propagates_other_permission_errors(self):
+        with mock.patch.object(
+            os, "killpg", side_effect=PermissionError(errno.EACCES, "denied")
+        ), mock.patch.object(subprocess, "run") as run:
+            with self.assertRaises(PermissionError) as caught:
+                self.assert_process_group_exits(12345)
+
+        self.assertEqual(caught.exception.errno, errno.EACCES)
+        run.assert_not_called()
+
+    def test_assert_process_group_exits_does_not_list_after_absent_probe(self):
+        with mock.patch.object(
+            os, "killpg", side_effect=ProcessLookupError(errno.ESRCH, "absent")
+        ), mock.patch.object(subprocess, "run") as run:
+            self.assert_process_group_exits(12345)
+
+        run.assert_not_called()
 
     def test_cleanup_live_leader_group_ignores_collected_leader(self):
         leader = subprocess.Popen([sys.executable, "-c", "pass"])
@@ -124,7 +222,8 @@ class ProcessGroupCleanupTests(unittest.TestCase):
 
         def tracked_popen(*args, **kwargs):
             leader = original_popen(*args, **kwargs)
-            leaders.append(leader)
+            if kwargs.get("start_new_session"):
+                leaders.append(leader)
             return leader
 
         try:
@@ -134,8 +233,7 @@ class ProcessGroupCleanupTests(unittest.TestCase):
             self.assertEqual(len(leaders), 1)
             leader = leaders[0]
             self.assertIsNotNone(leader.poll())
-            with self.assertRaises(ProcessLookupError):
-                os.killpg(leader.pid, 0)
+            self.assert_process_group_exits(leader.pid)
         finally:
             if leaders:
                 self.cleanup_live_leader_group(leaders[0])
