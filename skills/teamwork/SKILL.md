@@ -379,8 +379,11 @@ seat did not produce the artifact under review, and refuse with
 requires one fold plus independent verification of the changed clauses. `FAIL`
 requires a substantive or mixed finding class; a mixed determinate/substantive
 set is `FAIL` and determinate findings are never split out to downgrade it.
-`BLOCKED` is a status with verdict `NOT_APPLICABLE` and needs a blocker type and
-a reopen condition. A material fold-introduced defect closes `FAIL` regardless of
+`BLOCKED` is a status with verdict `NOT_APPLICABLE` and needs a blocker type,
+a reopen condition, and a complete `OPERATOR DECISION` from `thinking`'s
+`find-a-way` reference; a `BLOCKED` without one is invalid. Every `FAIL` or
+`NEEDS_REVISION` carries a `RECOMMENDED RESOLUTION` for each blocking finding; a
+judging return that names a blocker without one is invalid and is redone. A material fold-introduced defect closes `FAIL` regardless of
 version count.
 
 Every judging return names `RELEVANCE PERIMETER`, `ADDITIONAL SOURCES
@@ -417,8 +420,12 @@ surfaces, Q4 applied account payload with fresh-session proof pending, and Q5
 accepted repository and required account surfaces with fresh-session proof.
 Publication and installed bytes do not prove fresh-session effectivity. Record
 source and target hashes and bytes through a governed bridge. Installation is
-Q4 at most. Read `thinking`'s `find-a-way` reference for a blocker or
-lawful non-blocking repair. Find a Way is advisory and read-only.
+Q4 at most. Read `thinking`'s `find-a-way` reference on every blocker in any
+seat, at first encounter, and in every judging pass that has a finding. No
+seat submits a bare blocker: a judging seat resolves each blocker into a
+`RECOMMENDED RESOLUTION` (an exact, ready-to-apply fix that the operator
+applies) or, when no agent may decide it, an `OPERATOR DECISION`. The judging
+seat never edits the judged artifact.
 
 ## Standing behaviors
 
@@ -429,8 +436,9 @@ lawful non-blocking repair. Find a Way is advisory and read-only.
 - Fix defect classes, not isolated symptoms.
 - Capability is not authorization.
 - Completion is not authority for the next step.
-- Blocker remedies, pass shapes, and lawful rival routes are advisory: the
-  owning seat adopts or rejects them with reasons. Their presence and
+- No bare blockers. Every blocker arrives as a `RECOMMENDED RESOLUTION` or an
+  `OPERATOR DECISION`. The operator applies a recommended resolution (or
+  directs the owning seat to) and runs its confirm check, or rejects it. Their presence and
   completeness on a governed worker return are enforced mechanically by the
   Find-a-Way return gate at the completion owner.
 - Copy is product: rendered strings are governed surfaces, not decoration.

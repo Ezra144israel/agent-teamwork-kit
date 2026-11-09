@@ -326,14 +326,19 @@ identity and apply the whole reference: guard, trigger, KEEP/DROP/UNKNOWN
 salvage, cheapest discriminating experiment, route-family diversity, progress,
 counter accounting, terminal, and authority limits.
 
-For this workflow, the standing trigger keys on the objective-lineage-stable
-cause ID: when that same cause survives one meaningful correction, Find a Way
-fires. The Oracle Certifier adjudicates route-family difference. When two
+For this workflow, Find a Way fires on every blocker at first encounter, in
+the Builder and in the Judge. Every Judge blocking finding carries a `RECOMMENDED
+RESOLUTION` for the operator, who applies it or directs the Builder to; the
+Judge never edits the candidate. A Judge return with a bare blocker is
+invalid. The route-family limit below keys on the objective-lineage-stable
+cause ID, counted from the first meaningful correction of that cause. The
+Oracle Certifier adjudicates route-family difference. When two
 certified families die on the same cause, do not open a third and do not reset
-through reconvergence. Return the cause exactly as the pinned reference requires:
-either a true stop or an authority proposal. The workflow mapping is `BLOCKED`;
-an authority proposal carries `CONTEXT IMPACT: AUTHORITY_STOP` and the exact
-operator decision needed to open a different authorized work unit.
+through reconvergence. Return the cause as an `OPERATOR DECISION`, exactly as
+the pinned reference requires. The workflow mapping is `BLOCKED`, which is
+valid only with that decision attached; an authority decision carries
+`CONTEXT IMPACT: AUTHORITY_STOP` and the exact operator approval needed to
+open a different authorized work unit.
 
 Persistence never expands authority, scope, spend, access, or irreversibility.
 
@@ -367,6 +372,9 @@ REQUIRED CORRECTION OUTCOME:
 EXPECTED LEDGER DELTA:
 ROUTE FAMILY CLAIM / CERTIFIER DISPOSITION:
 EXACT RECHECK:
+RECOMMENDED RESOLUTION: (required; per thinking's find-a-way Section 8: the
+  exact ready-to-apply fix for the operator, why it works, and the check
+  that confirms it after it is applied)
 ```
 
 For `RECONVERGE`, name the invalid contract or oracle assumption, invalidate
@@ -374,8 +382,9 @@ dependent greens, preserve recoverable candidate evidence, close the current
 subject, and state the minimum new subject and its review gate.
 
 For `BLOCKED`, name the true stop, evidence, preserved assets, lawful
-alternatives, and exact reopen condition. A candidate-caused failure is not
-`BLOCKED`.
+alternatives, and exact reopen condition, and attach a complete `OPERATOR
+DECISION` per thinking's find-a-way Section 7. A `BLOCKED` without one is
+invalid. A candidate-caused failure is not `BLOCKED`.
 
 For `SHIP`, record complete final-state evidence and state explicitly:
 

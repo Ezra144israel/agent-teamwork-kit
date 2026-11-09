@@ -6,16 +6,23 @@ evidence, or stop conditions.
 
 ## Triggers
 
-Load this reference when:
+This reference fires on every blocker, in every seat, on first encounter. Do
+not wait for a correction to fail first. Load it when:
 
 - the operator says `find a way`, `solve it another way`, `unblock this`, or an
   equivalent;
-- a diagnosed and meaningfully corrected route fails while no true stop
-  applies;
-- a Pressure-Tester encounters any blocking finding;
-- a Reviewer encounters any blocking finding; or
-- a Pressure-Tester or Reviewer has a non-blocking finding and can identify a
-  lawful solution worth returning.
+- any seat (Builder, Orchestrator, Planner, Pressure-Tester, Reviewer, or a
+  solo agent) encounters a blocker, a failed route, a failed tool, or a gate it
+  cannot pass;
+- a diagnosed and meaningfully corrected route fails;
+- a Pressure-Tester or Reviewer encounters any blocking finding; or
+- a Pressure-Tester or Reviewer has any finding, blocking or non-blocking.
+
+**No bare blockers.** No seat may return, report, or stop on a blocker without
+having run this reference. Every blocker leaves the seat in one of two forms
+only: a `RECOMMENDED RESOLUTION` (Section 8) or an `OPERATOR DECISION` (Section
+7). A return that names a blocker without one of these is invalid and must be
+redone, not accepted.
 
 Do not load it to create activity when a judging seat has no finding. Use a
 proportionate pass for a small non-blocking issue. Do not invent alternatives
@@ -96,7 +103,7 @@ test. Do not end in brainstorming when a lawful probe can answer the question.
 
 A judging seat may inspect lawful sources, run authorized non-mutating checks,
 compare routes, identify root cause, and propose environment repair. It may
-not edit the reviewed artifact, implement a fix, mutate shared state, commit,
+not edit the reviewed artifact or any copy of it, implement a fix, mutate shared state, commit,
 push, publish, deploy, approve, widen scope, grant authority, or weaken the
 objective or acceptance evidence.
 
@@ -120,19 +127,33 @@ blocker. Do not inflate one root into several independent findings or optimize
 for rejection count. Give the owning seat enough evidence to repair the
 complete defect class.
 
-## 7. Handle a true stop
+## 7. Turn a true stop into an operator decision
 
-Hold the affected operation when authority is missing, safety or privacy
-blocks it, essential evidence cannot be trusted, scope must change, an
-irreversible choice needs the operator, or an explicit retry, attempt, cycle, time or cost limit that binds under
-teamwork's cycle reassessment rule is exhausted. Classify default review/process
-thresholds through teamwork's cycle reassessment rule before treating
-a count as exhausted authority. Keep independent authorized work moving.
+Some conditions no agent may resolve on its own: authority is missing, safety
+or privacy blocks it, essential evidence cannot be trusted, scope must change,
+an irreversible choice needs the operator, or an explicit retry, attempt,
+cycle, time or cost limit that binds under teamwork's cycle reassessment rule
+is exhausted. Classify default review/process thresholds through teamwork's
+cycle reassessment rule before treating a count as exhausted authority.
 
-Return the exact blocker, preserved `KEEP`, failed routes, lawful alternatives,
-and what unlocks continuation. Name an authority proposal and re-entry
-condition when authority is the only missing piece. Do not collapse the result
-into "impossible."
+These are never returned as a bare blocker. Hold only the affected operation,
+keep all independent authorized work moving, and return an `OPERATOR DECISION`
+the operator can answer in one word:
+
+```text
+OPERATOR DECISION
+- Decision needed: <one sentence>
+- Why no agent can decide it: <authority | safety | privacy | evidence |
+  scope | irreversible | binding limit>
+- Recommended option: <option, and what happens immediately if approved>
+- Alternatives: <each lawful alternative and its consequence>
+- Exact approval wording: <what the operator says to unlock it>
+- Preserved: KEEP / DROP / UNKNOWN, failed routes
+- Re-entry: <the step that resumes on approval>
+```
+
+Do not collapse the result into "impossible" or "blocked". Answering the
+decision request is the only thing left for the operator to do.
 
 ## 8. Apply it in judging seats
 
@@ -143,12 +164,40 @@ defects and cooperative toward the shared outcome.
 Pressure-Testers do not rewrite the packet they judge. Reviewers do not
 implement the Builder repair they judge. Advice is not authorship.
 
-For each blocking finding, return the root defect class, grounded evidence,
-`KEEP`, `DROP`, `UNKNOWN`, the lawful route or routes, the cheapest useful
-probe and result when one exists, the recommended remedy, real alternatives,
-the close or unlock condition, and the shortest `PASS SHAPE` or `ACCEPTED
-SHAPE`. A substantive defect may still correctly produce `FAIL` or
-`NEEDS_REVISION`.
+A judging seat never submits a bare blocker, and never edits the work. When a
+Reviewer or Pressure-Tester finds a blocking defect, it must run this whole
+reference to work out the resolution, then hand it to the operator as a
+recommendation. The operator applies it. Each blocking finding carries a
+`RECOMMENDED RESOLUTION`:
+
+```text
+RECOMMENDED RESOLUTION
+- Blocker: what is wrong, in one sentence, with grounded evidence
+  (file and line, command output)
+- Root defect class
+- KEEP / DROP / UNKNOWN
+- Routes considered (at least two families when uncertainty remained) and why
+  the recommended one wins
+- Recommended fix: the exact, ready-to-apply change (patch, replacement text,
+  or command), complete enough that the operator can apply it without further
+  design
+- Why it works: the read-only checks and reasoning that support it, marked
+  verified or inferred
+- Confirm after applying: the exact check the operator runs to confirm the fix
+- ACCEPTED SHAPE / PASS SHAPE once applied
+```
+
+The verdict may still be `FAIL` or `NEEDS_REVISION`, because the work as
+submitted is not yet acceptable, but it always ships with the recommended fix.
+The operator applies it (or directs the owning seat to) and runs the confirm
+check, or rejects it. The judging seat never applies it, so the review stays
+independent.
+
+If the reviewer cannot recommend a fix because a Section 7 condition applies,
+return an `OPERATOR DECISION` instead. If no route survives the probes and no
+Section 7 condition applies, the search is not finished: open a new route
+family or return an `OPERATOR DECISION` asking for the capability or access
+the missing route needs.
 
 For a solvable non-blocking finding, use a proportionate pass and return the
 smallest lawful solution. Do not bounce it to the Orchestrator merely because
@@ -158,4 +207,5 @@ the judging seat cannot implement it.
 
 When a route is verified and the problem is solved, close the finite route
 search. If no lawful route exists or essential evidence cannot be trusted,
-use the true-stop format instead.
+return an `OPERATOR DECISION` (Section 7). A search never closes on a bare
+blocker.

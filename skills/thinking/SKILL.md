@@ -14,7 +14,7 @@ Resolve these paths relative to this skill:
 | `references/escalation-and-retries.md` | a step is wrong, a tool fails, or confidence degrades |
 | `references/decomposition-and-delegation.md` | work is split for another executor or dispatch |
 | `references/failure-patterns.md` | a failure tell fires or a correction lands |
-| `references/find-a-way.md` | the operator asks for another route, a diagnosed route fails, or a judging seat finds a blocker or a solvable defect |
+| `references/find-a-way.md` | ALWAYS on any blocker in any seat, at first encounter; on every review or pressure-test that has a finding; when a route or tool fails; or when the operator asks for another route |
 
 Do not preload all references.
 
@@ -81,8 +81,16 @@ not a green result. If a check is unavailable, state the exact limitation.
 ## Recovery and lawful routes
 
 When reality diverges, identify the defect class before fixing the instance.
-Find a Way is advisory. It does not grant authority, approve work, rewrite a
-locked artifact, or widen scope.
+
+Never return a bare blocker. Every blocker, in every seat, runs Find a Way
+first and leaves as either a `RECOMMENDED RESOLUTION` (an exact,
+ready-to-apply fix for the operator) or an `OPERATOR DECISION` (a one-word
+decision for the operator, with a recommendation). A reviewer that finds a
+blocker works out the fix this way instead of only reporting it.
+
+Find a Way does not grant authority, approve work, rewrite a locked artifact,
+or widen scope. A judging seat never edits the work it judges; it recommends,
+and the operator applies.
 
 ## Communication gate
 
